@@ -13,16 +13,13 @@ namespace Homework3
         private volatile int _numWriters;
         private volatile int _waitingWriters;
         private SpinLock _lock;
-
         public RwLock()
         {
-            // most similar to this: ReaderWriterLockSlim
             _numReaders = 0;
             _numWriters = 0;
             _waitingWriters = 0;
             _lock = new SpinLock();
         }
-
         public void ReadLock()
         {
             Lock();
@@ -35,14 +32,12 @@ namespace Homework3
             _numReaders++;
             Unlock();
         }
-
         public void ReadUnLock()
         {
             Lock();
             _numReaders--;
             Unlock();
         }
-
         public void WriteLock()
         {
             Lock();
@@ -57,14 +52,12 @@ namespace Homework3
             _numWriters++;
             Unlock();
         }
-
         public void WriteUnLock()
         {
             Lock();
             _numWriters--;
             Unlock();
         }
-
         private void Lock()
         {
             var taken = false;
@@ -73,7 +66,6 @@ namespace Homework3
                 _lock.TryEnter(ref taken);
             }
         }
-
         private void Unlock()
         {
             _lock.Exit(true);

@@ -7,5 +7,5 @@ namespace Homework3 {
                 yield return i;
             }
         } 
-    }
+   }
 }

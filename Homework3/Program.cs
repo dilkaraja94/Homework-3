@@ -30,12 +30,11 @@ namespace Homework3 {
         static void Main(string[] args) {
 
             AppDomain.CurrentDomain.UnhandledException += HandleUnhandledException;
-
             if (args.Length == 2) {
                 var fileName = new FileInfo(args[1]);
                 if (args[0] == "--createDataFile") {
                     using (var writer = new NumberWriter(fileName)) {
-                        writer.WriteIntegers(Sequence.Create(Constants.LowerBound, Constants.UpperBound));   //Constants.LowerBound, .UpperBound
+                        writer.WriteIntegers(Sequence.Create(Constants.LowerBound, Constants.UpperBound));   
                     }
                 } else if (args[0] == "--processDataFile") {
                     var startTime = DateTime.Now;
@@ -52,14 +51,12 @@ namespace Homework3 {
                 PrintUsage();
             }
         }
-
         private static void PrintUsage() {
             Console.WriteLine("Usage:");
             Console.WriteLine("Homework3 --createDataFile [file name]");
             Console.WriteLine("Homework3 --processDataFile [file name]");
             Environment.ExitCode = -1;
         }
-
         private static void HandleUnhandledException(object sender, UnhandledExceptionEventArgs e) {
             var exception = e.ExceptionObject as Exception;
             if (exception != null) {
@@ -70,7 +67,6 @@ namespace Homework3 {
             }
         }
     }
-
     static class Constants {
         public const long LowerBound = 1000000;
         public const long UpperBound = 5000000;

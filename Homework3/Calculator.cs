@@ -10,7 +10,6 @@ namespace Homework3 {
             var results = new List<long>();
             var numbersToCheck = new BoundBuffer<long>();
      
-
             StartComputationThreads(results, numbersToCheck);
 
             var progressMonitor = new ProgressMonitor(results);
@@ -19,11 +18,11 @@ namespace Homework3 {
             
 
             foreach (var value in reader.ReadIntegers()) {
-                numbersToCheck.Enqueue(value);                //critical section
+                numbersToCheck.Enqueue(value);                
             }
             
             while (numbersToCheck.Count() > 0) {
-                Thread.Sleep(100); // wait for the computation to complete. New Lock?
+                Thread.Sleep(100); 
             }
             Console.WriteLine("{0} of the numbers were prime", progressMonitor.TotalCount);
         }

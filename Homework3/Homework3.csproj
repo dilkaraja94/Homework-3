@@ -41,13 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoundBuffer.cs" />
     <Compile Include="Calculator.cs" />
     <Compile Include="IsNumberPrimeCalculator.cs" />
+    <Compile Include="Monitor.cs" />
     <Compile Include="NumberReader.cs" />
     <Compile Include="NumberWriter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ProgressMonitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RwLock.cs" />
     <Compile Include="Sequence.cs" />
   </ItemGroup>
   <ItemGroup>

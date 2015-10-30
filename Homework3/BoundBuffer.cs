@@ -14,8 +14,6 @@ namespace Homework3
             private Semaphore _full;
             private Semaphore _empty;
             private Monitor _mutex;
-
-
             public BoundBuffer()
             {
                 _queue = new Queue<T>();
@@ -23,7 +21,6 @@ namespace Homework3
                 _full = new Semaphore(0, MaxSize);
                 _empty = new Semaphore(MaxSize, MaxSize);
             }
-
             public BoundBuffer(int n)
             {
                 _queue = new Queue<T>();
@@ -31,7 +28,6 @@ namespace Homework3
                 _full = new Semaphore(0, n);
                 _empty = new Semaphore(n, n);
             }
-
             public T Dequeue()
             {
                 _full.WaitOne();
@@ -45,7 +41,6 @@ namespace Homework3
                 _empty.Release(1);
                 return item;
             }
-
         public void Enqueue(T item)
         {
             _empty.WaitOne();
@@ -58,7 +53,6 @@ namespace Homework3
             _mutex.Exit();
             _full.Release(1);
         }
-
         public int Count()
         {
             int i = 0;
@@ -66,11 +60,7 @@ namespace Homework3
             {
                 i++; 
             }
-
             return i;
         }
-
-
-        }
-    
+    } 
 }
