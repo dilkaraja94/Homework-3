@@ -12,7 +12,7 @@ namespace Homework3 {
                 file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.SequentialScan), 65536));
         }
         public IEnumerable<long> ReadIntegers() {
-            string line;                                      //critical section
+            string line;                                     
             while ((line = _reader.ReadLine()) != null) {
                 var value = long.Parse(line);
                 yield return value;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-        class BoundBuffer<T>
+        class BoundBuffer<T>        //new c file which is refereced in other functions. 
         {
             private const int MaxSize = 5;
             private Queue<T> _queue;

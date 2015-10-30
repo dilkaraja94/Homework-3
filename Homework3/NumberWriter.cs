@@ -15,7 +15,7 @@ namespace Homework3 {
         }
         public void WriteIntegers(IEnumerable<long> values) {
             wlock.WriteLock();
-            foreach (var value in values) {                             //critical section
+            foreach (var value in values) {                           
                 _writer.WriteLine(value);
             }
             wlock.WriteUnLock();
