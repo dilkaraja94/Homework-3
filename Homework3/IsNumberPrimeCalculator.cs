@@ -1,51 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
+using System.Threading; 
 
-namespace Homework3
-{
-    internal class IsNumberPrimeCalculator
-    {
+namespace Homework3 {
+    internal class IsNumberPrimeCalculator {
         private readonly ICollection<long> _primeNumbers;
         private readonly BoundBuffer<long> _numbersToCheck;
         private RwLock mutex = new RwLock();
+  
 
-
-        public IsNumberPrimeCalculator(ICollection<long> primeNumbers, BoundBuffer<long> numbersToCheck)
-        {
+        public IsNumberPrimeCalculator(ICollection<long> primeNumbers, BoundBuffer<long> numbersToCheck) {
             _primeNumbers = primeNumbers;
             _numbersToCheck = numbersToCheck;
-
+       
         }
 
-        public void CheckIfNumbersArePrime()
-        {
-            while (true)
-            {
-
+        public void CheckIfNumbersArePrime() {
+            while (true) {
+                
                 var numberToCheck = _numbersToCheck.Dequeue();       //critical section
-
-                if (IsNumberPrime(numberToCheck))
-                {
+                
+                if (IsNumberPrime(numberToCheck)) {
                     _primeNumbers.Add(numberToCheck);
                 }
-
+                
             }
         }
 
-        private bool IsNumberPrime(long numberWeAreChecking)
-        {
+        private bool IsNumberPrime(long numberWeAreChecking) {
             const long firstNumberToCheck = 3;
 
-            if (numberWeAreChecking % 2 == 0)
-            {
+            if (numberWeAreChecking % 2 == 0) {
                 return false;
             }
             var lastNumberToCheck = Math.Sqrt(numberWeAreChecking);
-            for (var currentDivisor = firstNumberToCheck; currentDivisor < lastNumberToCheck; currentDivisor += 2)
-            {
-                if (numberWeAreChecking % currentDivisor == 0)
-                {
+            for (var currentDivisor = firstNumberToCheck; currentDivisor < lastNumberToCheck; currentDivisor += 2) {
+                if (numberWeAreChecking % currentDivisor == 0) {
                     return false;
                 }
             }

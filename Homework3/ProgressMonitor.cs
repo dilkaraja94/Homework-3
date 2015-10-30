@@ -6,6 +6,7 @@ namespace Homework3 {
     internal class ProgressMonitor {
         private readonly List<long> _results;
         public long TotalCount = 0;
+        public Monitor monitor = new Monitor(); 
 
         public ProgressMonitor(List<long> results) {
             _results = results;
@@ -14,11 +15,17 @@ namespace Homework3 {
         public void Run() {
             while (true) {
                 Thread.Sleep(100); // wait for 1/10th of a second
-
-                var currentcount = _results.Count;
+                monitor.Enter(); 
+                if (_results.Count > 0)
+                {
+                    monitor.Wait();
+                }
+                var currentcount = _results.Count;   //critical sections
                 TotalCount += currentcount;
 
                 _results.Clear(); // clear out the current primes to save some memory
+                monitor.Pulse();
+                monitor.Exit();
 
                 if (currentcount > 0) {
                     Console.WriteLine("{0} primes found so far", TotalCount);

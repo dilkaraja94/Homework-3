@@ -35,7 +35,7 @@ namespace Homework3 {
                 var fileName = new FileInfo(args[1]);
                 if (args[0] == "--createDataFile") {
                     using (var writer = new NumberWriter(fileName)) {
-                        writer.WriteIntegers(Sequence.Create(Constants.LowerBound, Constants.UpperBound));
+                        writer.WriteIntegers(Sequence.Create(Constants.LowerBound, Constants.UpperBound));   //Constants.LowerBound, .UpperBound
                     }
                 } else if (args[0] == "--processDataFile") {
                     var startTime = DateTime.Now;

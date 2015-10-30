@@ -5,6 +5,7 @@ using System.IO;
 namespace Homework3 {
     internal class NumberWriter : IDisposable {
         private readonly TextWriter _writer;
+        private RwLock wlock = new RwLock();
 
         public NumberWriter(FileInfo file) {
             if (File.Exists(file.FullName)) {
@@ -15,9 +16,11 @@ namespace Homework3 {
         }
 
         public void WriteIntegers(IEnumerable<long> values) {
-            foreach (var value in values) {
+            wlock.WriteLock();
+            foreach (var value in values) {                             //critical section
                 _writer.WriteLine(value);
             }
+            wlock.WriteUnLock();
         }
 
         public void Dispose() {
