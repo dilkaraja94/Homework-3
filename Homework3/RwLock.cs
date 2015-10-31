@@ -13,6 +13,7 @@ namespace Homework3
         private volatile int _numWriters;
         private volatile int _waitingWriters;
         private SpinLock _lock;
+
         public RwLock()
         {
             _numReaders = 0;

@@ -1,6 +1,4 @@
-C:\Users\Raj\Documents\Homework-3\Homework3\bin\Debug\Homework3.exe.config
 C:\Users\Raj\Documents\Homework-3\Homework3\bin\Debug\Homework3.exe
-C:\Users\Raj\Documents\Homework-3\Homework3\bin\Debug\Homework3.pdb
+C:\Users\Raj\Documents\Homework-3\Homework3\bin\Debug\Homework3.exe.config
 C:\Users\Raj\Documents\Homework-3\Homework3\obj\Debug\Homework3.exe
 C:\Users\Raj\Documents\Homework-3\Homework3\obj\Debug\Homework3.pdb
-C:\Users\Raj\Documents\Homework-3\Homework3\obj\Debug\Homework3.csprojResolveAssemblyReference.cache

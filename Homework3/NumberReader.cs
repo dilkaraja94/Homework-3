@@ -6,7 +6,7 @@ using System.IO;
 namespace Homework3 {
     class NumberReader : IDisposable {
         private readonly TextReader _reader;
-        private RwLock rlock = new RwLock(); 
+        //private RwLock rlock = new RwLock(); 
         public NumberReader(FileInfo file) {
             _reader = new StreamReader(new BufferedStream(new FileStream(
                 file.FullName, FileMode.Open, FileAccess.Read, FileShare.Read, 4096, FileOptions.SequentialScan), 65536));

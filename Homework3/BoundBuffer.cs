@@ -32,11 +32,11 @@ namespace Homework3
             {
                 _full.WaitOne();
                 _mutex.Enter();
-                while (_queue.Count == 0){
+                /*while (_queue.Count == 0){
                 _mutex.Wait();
-                }
+                }*/
                 var item = _queue.Dequeue();
-                _mutex.Pulse();
+                //_mutex.Pulse();
                 _mutex.Exit();
                 _empty.Release(1);
                 return item;
@@ -45,9 +45,9 @@ namespace Homework3
         {
             _empty.WaitOne();
             _mutex.Enter();
-            while (_queue.Count == MaxSize) {
+            /*while (_queue.Count == MaxSize) {
                 _mutex.Wait();
-            }
+            }*/
             _queue.Enqueue(item);       
             _mutex.Pulse();
             _mutex.Exit();

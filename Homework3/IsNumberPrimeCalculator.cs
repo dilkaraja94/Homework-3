@@ -6,7 +6,7 @@ namespace Homework3 {
     internal class IsNumberPrimeCalculator {
         private readonly ICollection<long> _primeNumbers;
         private readonly BoundBuffer<long> _numbersToCheck;
-        private RwLock mutex = new RwLock();
+       // private RwLock mutex = new RwLock();
         public IsNumberPrimeCalculator(ICollection<long> primeNumbers, BoundBuffer<long> numbersToCheck) {
             _primeNumbers = primeNumbers;
             _numbersToCheck = numbersToCheck;

@@ -5,7 +5,7 @@ using System.IO;
 namespace Homework3 {
     internal class NumberWriter : IDisposable {
         private readonly TextWriter _writer;
-        private RwLock wlock = new RwLock();
+        //private RwLock wlock = new RwLock();
         public NumberWriter(FileInfo file) {
             if (File.Exists(file.FullName)) {
                 File.Delete(file.FullName);
@@ -14,11 +14,11 @@ namespace Homework3 {
                 file.FullName, FileMode.Create, FileAccess.Write, FileShare.None, 8192, FileOptions.SequentialScan)));
         }
         public void WriteIntegers(IEnumerable<long> values) {
-            wlock.WriteLock();
+            //wlock.WriteLock();
             foreach (var value in values) {                           
                 _writer.WriteLine(value);
             }
-            wlock.WriteUnLock();
+            //wlock.WriteUnLock();
         }
         public void Dispose() {
             _writer.Dispose();
